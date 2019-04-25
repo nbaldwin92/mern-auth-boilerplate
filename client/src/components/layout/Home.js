@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
+import styled from 'styled-components';
+
 import { Link } from 'react-router-dom';
 
 import { connect } from 'react-redux';
@@ -16,6 +18,12 @@ const Home = props => {
     }
   });
 
+  const LinkWrapper = styled.section`
+    width: 140px;
+    border-radius: 3px;
+    letter-spacing: 1.5px;
+  `;
+
   return (
     <div className="container">
       <div className="row">
@@ -23,30 +31,14 @@ const Home = props => {
           <h4>Welcome</h4>
           <p>Login or Register</p>
           <br />
-          <div className="col s6">
-            <Link
-              to="/register"
-              style={{
-                width: '140px',
-                borderRadius: '3px',
-                letterSpacing: '1.5px',
-              }}
-            >
+          <LinkWrapper>
+            <Link to="/register" style={{}}>
               Register
             </Link>
-          </div>
-          <div className="col s6">
-            <Link
-              to="/login"
-              style={{
-                width: '140px',
-                borderRadius: '3px',
-                letterSpacing: '1.5px',
-              }}
-            >
-              Log In
-            </Link>
-          </div>
+          </LinkWrapper>
+          <LinkWrapper>
+            <Link to="/login">Log In</Link>
+          </LinkWrapper>
         </div>
       </div>
     </div>
