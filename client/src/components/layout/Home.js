@@ -1,7 +1,21 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import { Link } from 'react-router-dom';
 
+import { connect } from 'react-redux';
+import { loginUser } from '../../actions/authActions';
+
 class Home extends Component {
+  componentDidMount() {
+    // If logged in and user navigates to home page, should redirect them to dashboard
+    // eslint-disable-next-line react/prop-types
+    const { auth, history } = this.props;
+    if (auth.isAuthenticated) {
+      history.push('/dashboard');
+    }
+  }
+
   render() {
     return (
       <div className="container">
@@ -40,5 +54,18 @@ class Home extends Component {
     );
   }
 }
+Home.propTypes = {
+  auth: PropTypes.object.isRequired,
+  // eslint-disable-next-line react/no-unused-prop-types
+  errors: PropTypes.object.isRequired,
+};
 
-export default Home;
+const mapStateToProps = state => ({
+  auth: state.auth,
+  errors: state.errors,
+});
+
+export default connect(
+  mapStateToProps,
+  { loginUser }
+)(Home);

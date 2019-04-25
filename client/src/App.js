@@ -13,6 +13,9 @@ import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import PrivateRoute from './components/private-route/PrivateRoute';
 import Dashboard from './components/dashboard/Dashboard';
+import NoPage from './components/NoPage';
+
+import Test from './components/Test';
 
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
@@ -43,11 +46,13 @@ class App extends Component {
         <Router>
           <div className="App">
             <Navbar />
-            <Route exact path="/" component={Home} />
-            <Route exact path="/register" component={Register} />
-            <Route exact path="/login" component={Login} />
             <Switch>
+              <Route exact path="/" component={Home} />
+              <Route exact path="/register" component={Register} />
+              <Route exact path="/login" component={Login} />
+              <Route exact path="/test" component={Test} />
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
+              <Route component={NoPage} />
             </Switch>
           </div>
         </Router>
