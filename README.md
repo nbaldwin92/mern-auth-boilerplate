@@ -1,10 +1,18 @@
-# Twitter Clone
+# MERN Boilerplate
 
-Write a project description
+React Frontend and Express backend
 
 ## Installation
 
-Describe the installation process
+Clone repo and enter the following commands:
+
+```
+cd client && npm install
+cd ..
+cd server && npm install
+cd ..
+npm install
+```
 
 ## Usage
 
