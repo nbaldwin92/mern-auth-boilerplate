@@ -1,29 +1,25 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
-class Navbar extends Component {
-  render() {
-    return (
-      <div className="navbar-fixed">
-        <nav className="z-depth-0">
-          <div className="nav-wrapper white">
-            <Link
-              to="/dashboard"
-              style={{
-                display: 'flex',
-                justifyContent: 'center',
-                fontFamily: 'monospace',
-                fontSize: 18,
-              }}
-              className="black-text"
-            >
-              MERN
-            </Link>
-          </div>
-        </nav>
-      </div>
-    );
-  }
-}
+import styled from 'styled-components';
+
+const Navbar = () => {
+  const NavWrapper = styled.section`
+    display: flex;
+    justify-content: center;
+    font-family: monospace;
+    font-size: 2em;
+    text-align: center;
+  `;
+  return (
+    <div>
+      <nav>
+        <NavWrapper>
+          <Link to="/dashboard">MERN</Link>
+        </NavWrapper>
+      </nav>
+    </div>
+  );
+};
 
 export default Navbar;

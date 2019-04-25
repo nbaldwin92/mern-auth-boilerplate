@@ -1,5 +1,5 @@
 import React from 'react';
 
-export default function NoPage() {
-  return <div>Page Not Found</div>;
-}
+const NoPage = () => <div>Page Not Found</div>;
+
+export default NoPage;

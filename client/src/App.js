@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import jwtDecode from 'jwt-decode';
 import { Provider } from 'react-redux';
@@ -39,25 +39,21 @@ if (localStorage.jwtToken) {
     store.dispatch(isAuth);
   }
 }
-class App extends Component {
-  render() {
-    return (
-      <Provider store={store}>
-        <Router>
-          <div className="App">
-            <Navbar />
-            <Switch>
-              <Route exact path="/" component={Home} />
-              <Route exact path="/register" component={Register} />
-              <Route exact path="/login" component={Login} />
-              <Route exact path="/test" component={Test} />
-              <PrivateRoute exact path="/dashboard" component={Dashboard} />
-              <Route component={NoPage} />
-            </Switch>
-          </div>
-        </Router>
-      </Provider>
-    );
-  }
-}
+const App = () => (
+  <Provider store={store}>
+    <Router>
+      <div className="App">
+        <Navbar />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/register" component={Register} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/test" component={Test} />
+          <PrivateRoute exact path="/dashboard" component={Dashboard} />
+          <Route component={NoPage} />
+        </Switch>
+      </div>
+    </Router>
+  </Provider>
+);
 export default App;

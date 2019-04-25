@@ -1,33 +1,23 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import axios from 'axios';
 
-export default class Test extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      test: '',
-    };
-  }
+const Test = () => {
+  const [test, setTest] = useState(0);
 
-  componentDidMount() {
-    const { test } = this.state;
-
+  useEffect(() => {
     axios.get('http://localhost:5000/api/test/test').then(response => {
-      this.setState(() => ({
-        test: response.data,
-      }));
+      setTest(response.data);
       console.log(test);
     });
-  }
+  });
 
-  render() {
-    const { test } = this.state;
-    return (
-      <div>
-        Test Page
-        <p>{test}</p>
-      </div>
-    );
-  }
-}
+  return (
+    <div>
+      Test Page
+      <p>{test}</p>
+    </div>
+  );
+};
+
+export default Test;
