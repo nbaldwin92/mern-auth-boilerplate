@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import styled from 'styled-components';
 
+import { Link } from 'react-router-dom';
+
 import { connect } from 'react-redux';
 import { logoutUser } from '../../actions/authActions';
 
@@ -40,6 +42,9 @@ const Dashboard = props => {
           <button type="submit" onClick={onLogoutClick}>
             Logout
           </button>
+          <Link to="/test">
+            <button type="submit">Test Page</button>
+          </Link>
         </div>
       </div>
     </Wrapper>

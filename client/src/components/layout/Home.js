@@ -19,7 +19,6 @@ const Home = props => {
   });
 
   const Button = styled.button`
-    text-color: white;
     color: white;
   `;
 
