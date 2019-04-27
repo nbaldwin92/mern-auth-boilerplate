@@ -15,7 +15,7 @@ const Navbar = () => {
     <div>
       <nav>
         <NavWrapper>
-          <Link to="/dashboard">MERN</Link>
+          <Link to="/">MERN</Link>
         </NavWrapper>
       </nav>
     </div>

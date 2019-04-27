@@ -2,10 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+import styled from 'styled-components';
+
 import { connect } from 'react-redux';
 import { loginUser } from '../../actions/authActions';
 
 const Login = props => {
+  const Error = styled.section`
+    font-size: 1em;
+    color: red;
+  `;
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -46,10 +53,12 @@ const Login = props => {
 
           <form>
             <p>Sign in</p>
-            <p>{errors.email}</p>
-            <p>{errors.emailnotfound}</p>
-            <p>{errors.password}</p>
-            <p>{errors.passwordincorrect}</p>
+
+            <Error>{errors.email}</Error>
+            <Error>{errors.emailnotfound}</Error>
+            <Error>{errors.password}</Error>
+            <Error>{errors.passwordincorrect}</Error>
+
             <div>
               <input
                 className="form-control"

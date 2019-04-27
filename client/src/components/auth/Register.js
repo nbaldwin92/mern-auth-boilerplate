@@ -2,9 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import styled from 'styled-components';
 import { registerUser } from '../../actions/authActions';
 
 const Register = props => {
+  const Error = styled.section`
+    font-size: 1em;
+    color: red;
+  `;
+
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -52,10 +58,10 @@ const Register = props => {
           <form>
             <p>Sign up</p>
             <div>
-              <p>{errors.email}</p>
-              <p>{errors.name}</p>
-              <p>{errors.password}</p>
-              <p>{errors.password2}</p>
+              <Error>{errors.name}</Error>
+              <Error>{errors.email}</Error>
+              <Error>{errors.password}</Error>
+              <Error>{errors.password2}</Error>
               <input
                 className="form-control"
                 placeholder="Name"
