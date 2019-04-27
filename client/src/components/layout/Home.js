@@ -18,10 +18,14 @@ const Home = props => {
     }
   });
 
-  const LinkWrapper = styled.section`
-    width: 140px;
-    border-radius: 3px;
-    letter-spacing: 1.5px;
+  const Button = styled.button`
+    text-color: white;
+    color: white;
+  `;
+
+  const StyledLink = styled(Link)`
+    color: white;
+    height: 100%;
   `;
 
   return (
@@ -31,14 +35,18 @@ const Home = props => {
           <h4>Welcome</h4>
           <p>Login or Register</p>
           <br />
-          <LinkWrapper>
-            <Link to="/register" style={{}}>
+
+          <StyledLink to="/register" style={{}}>
+            <Button type="button" className="btn btn-dark">
               Register
-            </Link>
-          </LinkWrapper>
-          <LinkWrapper>
-            <Link to="/login">Log In</Link>
-          </LinkWrapper>
+            </Button>
+          </StyledLink>
+
+          <StyledLink to="/login">
+            <Button type="button" className="btn btn-dark">
+              Log In
+            </Button>
+          </StyledLink>
         </div>
       </div>
     </div>

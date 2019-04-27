@@ -26,10 +26,10 @@ class Register extends Component {
     }
   }
 
+  // TODO Don't use this method - handle errors better and display to client
   componentWillReceiveProps(nextProps) {
     if (nextProps.errors) {
       this.setState({
-        // eslint-disable-next-line react/no-unused-state
         errors: nextProps.errors,
       });
     }
@@ -58,6 +58,8 @@ class Register extends Component {
 
   render() {
     const { name, email, password, password2 } = this.state;
+    const { errors } = this.props;
+
     return (
       <div className="container">
         <div className="row">
@@ -75,16 +77,14 @@ class Register extends Component {
             <form>
               <p>Sign up</p>
               <div>
+                <p>{errors.email}</p>
+                <p>{errors.name}</p>
+                <p>{errors.password}</p>
+                <p>{errors.password2}</p>
                 <input
                   className="form-control"
                   placeholder="Name"
-                  label="Name"
-                  icon="user"
-                  group
                   type="text"
-                  validate
-                  error="wrong"
-                  success="right"
                   id="name"
                   onChange={this.onChange}
                   value={name}
@@ -92,9 +92,7 @@ class Register extends Component {
                 <input
                   className="form-control"
                   placeholder="Email"
-                  group
                   type="email"
-                  validate
                   id="email"
                   onChange={this.onChange}
                   value={email}
@@ -105,16 +103,13 @@ class Register extends Component {
                   placeholder="Password"
                   type="password"
                   id="password"
-                  validate
                   onChange={this.onChange}
                   value={password}
                 />
                 <input
                   className="form-control"
                   placeholder="Confirm Password"
-                  group
                   type="password"
-                  validate
                   id="password2"
                   onChange={this.onChange}
                   value={password2}
@@ -136,6 +131,7 @@ class Register extends Component {
 Register.propTypes = {
   registerUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired,
 };
 

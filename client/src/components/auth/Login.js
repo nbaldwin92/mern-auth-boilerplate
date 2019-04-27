@@ -24,6 +24,7 @@ class Login extends Component {
     }
   }
 
+  // TODO Don't use this method - Handle errors and display to client
   componentWillReceiveProps(nextProps) {
     // eslint-disable-next-line react/prop-types
     const { history } = this.props;
@@ -51,14 +52,13 @@ class Login extends Component {
 
   render() {
     const { email, password } = this.state;
+    const { errors } = this.props;
     return (
       <div className="container">
         <div style={{ marginTop: '4rem' }} className="row">
           <div className="col-lg-12">
-            <Link to="/" className="btn-flat waves-effect">
-              Back to home
-            </Link>
-            <div className="col s12" style={{ paddingLeft: '11.250px' }}>
+            <Link to="/">Back to home</Link>
+            <div style={{ paddingLeft: '11.250px' }}>
               <h4>
                 <b>Login</b> below
               </h4>
@@ -69,13 +69,15 @@ class Login extends Component {
 
             <form>
               <p>Sign in</p>
-              <div c>
+              <p>{errors.email}</p>
+              <p>{errors.emailnotfound}</p>
+              <p>{errors.password}</p>
+              <p>{errors.passwordincorrect}</p>
+              <div>
                 <input
                   className="form-control"
                   placeholder="Email"
-                  group
                   type="email"
-                  validate
                   id="email"
                   onChange={this.onChange}
                   value={email}
@@ -83,10 +85,8 @@ class Login extends Component {
                 <input
                   className="form-control"
                   placeholder="Password"
-                  group
                   type="password"
                   id="password"
-                  validate
                   onChange={this.onChange}
                   value={password}
                 />
@@ -107,7 +107,6 @@ class Login extends Component {
 Login.propTypes = {
   loginUser: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
-  // eslint-disable-next-line react/no-unused-prop-types
   errors: PropTypes.object.isRequired,
 };
 
