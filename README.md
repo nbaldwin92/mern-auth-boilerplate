@@ -1,6 +1,6 @@
-# MERN Boilerplate
+# MERN Auth Boilerplate
 
-React Frontend and Express backend
+React frontend and Express backend
 
 ## Installation
 
@@ -13,10 +13,6 @@ cd server && npm install
 cd ..
 npm install
 ```
-
-## Usage
-
-Write usage instructions
 
 ## Contributing
 
